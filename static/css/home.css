@@ -1,0 +1,26 @@
+html {
+	box-sizing:border-box
+}
+*,*:before,*:after {
+	box-sizing:inherit
+}
+
+/*NAV-BAR CSS*/
+.navbar {
+	padding: 5px;
+}
+.navbar-color {
+	background-color: #FFF;
+}
+.navbar-text {
+	color: #000;
+}
+.navbar-right {
+	float:right;
+}
+.navbar a {
+	text-decoration: none;
+	color: #000;
+}
+/*END*/
+
