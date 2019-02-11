@@ -48,3 +48,22 @@ html, body
 .content-padding {
 	padding: 18px 16px;
 }
+
+.project-row {
+	padding: 0px 8px;
+}
+.project-col {
+	float: left;
+	width: 100%;
+}
+@media (min-width: 601px) {
+	.project-col.half-row {
+		width: 49.9999%;
+	}
+}
+
+@media (min-width: 993px) {
+	.project-col.quarter-row {
+		width: 24.9999%;
+	}
+}
