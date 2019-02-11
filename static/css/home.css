@@ -1,13 +1,24 @@
 html {
 	box-sizing:border-box
 }
+html, body
+{
+    margin: 0;
+    padding: 0;
+}
 *,*:before,*:after {
 	box-sizing:inherit
 }
 
 /*NAV-BAR CSS*/
 .navbar {
-	padding: 5px;
+	padding: 15px;
+	border-style: solid;
+	border-width: 1px;
+	/*overflow: hidden;*/ /*Uncomment when adding background pic*/
+	position: fixed;
+	top: 0;
+	width: 100%;
 }
 .navbar-color {
 	background-color: #FFF;
@@ -19,6 +30,8 @@ html {
 	float:right;
 }
 .navbar a {
+	margin-right: 10px;
+	margin-left: 10px;
 	text-decoration: none;
 	color: #000;
 }
