@@ -1,6 +1,5 @@
 html {
 	box-sizing:border-box;
-	scroll-behavior: smooth;
 }
 html, body
 {
@@ -20,6 +19,7 @@ html, body
 	position: fixed;
 	top: 0;
 	width: 100%;
+	z-index: 1;
 }
 .navbar-color {
 	background-color: #FFF;
