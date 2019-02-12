@@ -5,6 +5,7 @@ html, body
 {
     margin: 0;
     padding: 0;
+    font-family: 'Titillium Web';font-size: 17px;
 }
 *,*:before,*:after {
 	box-sizing:inherit
@@ -56,8 +57,11 @@ html, body
 	position: absolute;
 	top: 50%;
 	left: 50%;
+	padding: 10px;
 	transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
+	background-color: rgba(17, 17, 17, 0.8);
+	color: white;
 }
 
 .content-padding {
