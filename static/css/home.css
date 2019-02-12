@@ -34,6 +34,22 @@ html, body
 	text-decoration: none;
 	color: #000;
 }
+
+.navbar-no-background {
+	padding: 15px;
+	/*overflow: hidden;*/ /*Uncomment when adding background pic*/
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+.navbar-no-background a {
+	margin-right: 10px;
+	margin-left: 10px;
+	text-decoration: none;
+	color: #FFF;
+}
 /*END*/
 
 .center-text {
