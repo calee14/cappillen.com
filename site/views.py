@@ -5,7 +5,7 @@ import os
 
 @app.route('/')
 def home():
-    render_template('home')
+    render_template('home.html')
 
 @app.route('/debug-sentry')
 def trigger_error():
