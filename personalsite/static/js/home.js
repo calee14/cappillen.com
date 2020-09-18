@@ -1,33 +1,40 @@
-console.log("Hello World");
-$("#about-button").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#about").offset().top
-    }, 2000);
+$(function() {
+  $(".p2").typed({
+    strings: ["DESIGNER", "DEVELOPER", "CREATIVE"],
+    typeSpeed: 50,
+    backSpeed: 10,
+    backDelay: 2000,
+    showCursor: false,
+    loop: false
+  });
 });
-$("#projects-button").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#projects").offset().top
-    }, 2000);
-});
-(function ($) {
-  $(document).ready(function(){
-    
-	// hide .navbar first
-	$(".navbar").hide();
-	
-	// fade in .navbar
-	$(function () {
-		$(window).scroll(function () {
-            // set distance user needs to scroll before we fadeIn navbar
-			if ($(this).scrollTop() > 100) {
-				$('.navbar').fadeIn();
-			} else {
-				$('.navbar').fadeOut();
-			}
-		});
 
-	
-	});
-
+$('.hero-down').mousedown(function() {
+  TweenMax.fromTo('.btn-react', 0.25, {
+    opacity: 0,
+    scale: 0
+  }, {
+    opacity: 0.25,
+    scale: 1,
+    onComplete: function() {
+      TweenMax.to('.btn-react', 0.25, {
+        opacity: 0,
+        scale: 0
+      });
+    }
+  });
 });
-	}(jQuery));
+
+// smooth scroll to div
+$('a[href*=#]:not([href=#])').click(function() {
+  if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+    var target = $(this.hash);
+    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+    if (target.length) {
+      $('html,body').animate({
+        scrollTop: target.offset().top
+      }, 1000);
+      return false;
+    }
+  }
+});

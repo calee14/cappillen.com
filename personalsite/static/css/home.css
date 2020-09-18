@@ -1,94 +1,96 @@
-html {
-	box-sizing:border-box;
-}
-html, body
-{
-    margin: 0;
-    padding: 0;
-    font-family: 'Titillium Web'; 
-    font-size: 17px;
-}
-*,*:before,*:after {
-	box-sizing:inherit
+html, body {
+  height: 100%;
 }
 
-/*NAV-BAR CSS*/
-.navbar {
-	padding: 15px;
-	/*overflow: hidden;*/ /*Uncomment when adding background pic*/
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 1;
-}
-.navbar-color {
-	background-color: #FFF;
-}
-.navbar-text {
-	color: #000;
-}
-.navbar-right {
-	float:right;
-}
-.navbar a {
-	margin-right: 10px;
-	margin-left: 10px;
-	text-decoration: none;
-	color: #000;
+body {
+  font-family: 'Roboto';
+  text-align: center;
+  color: #f5f5f5;
 }
 
-.navbar-no-background {
-	padding: 15px;
-	/*overflow: hidden;*/ /*Uncomment when adding background pic*/
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 1;
+.hero {
+  background: url('https://upload.wikimedia.org/wikipedia/commons/c/c5/Moraine_Lake_17092005.jpg') no-repeat center;
+  background-size: cover;
+  background-color: rgba(0,0,0,0.75);
+  background-blend-mode: multiply;
+  height: 100%;
+  width: 100%;
 }
 
-.navbar-no-background a {
-	margin-right: 10px;
-	margin-left: 10px;
-	text-decoration: none;
-	color: #FFF;
-}
-/*END*/
-
-.center-text {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	padding: 10px;
-	transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	background-color: rgba(17, 17, 17, 0.8);
-	color: white;
-}
-
-.content-padding {
-	padding: 18px 16px;
+.inner-text {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 50px;
+  @media only screen and (min-width: 320px) {
+    padding-left: 15px;
+    padding-right: 15px; 
+  }
+  @media only screen and (min-width: 400px) {
+    padding-left: 40px;
+    padding-right: 40px; 
+  }
+  @media only screen and (min-width: 680px) {
+    font-size: 75px;
+  }
+  @media only screen and (min-width: 950px) {
+    font-size: 100px;
+  }
 }
 
-.project-row {
-	padding: 0px 8px;
-}
-.project-col {
-	float: left;
-	width: 100%;
-	padding: 10px;
-}
-.section-title {
-	border-bottom: solid 1px;
-	border-color: #f1f1f1;
-}
-@media (min-width: 651px) {
-	.project-col.half-row {
-		width: 49.9999%;
-	}
+.p1 {
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 900;
+  marign: 0;
+  line-height: 1;
+  @media only screen and (max-width: 465px) {
+    display: block;
+    position: absolute;
+    top: -25%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
-@media (min-width: 993px) {
-	.project-col.quarter-row {
-		width: 24.9999%;
-	}
+.p2 {
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 100;
+  marign: 0;
+  line-height: 1;
+  color: #4FC3F7;
+  @media only screen and (max-width: 465px) {
+    position: relative;
+    top: 0.6em;
+  }
+}
+
+.hero-down {
+  position: absolute;
+  bottom: 0;
+  font-size: 2em;
+  width: 2em;
+  height: 2em;
+  color: #f5f5f5;
+  border-radius: 100%;
+  &:hover, &:focus {
+    color: #ccc;
+  }
+  &:active {
+    color: #f5f5f5;
+  }
+  .btn-react {
+    background-color: #f5f5f5;
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    opacity: 0;
+    position: absolute;
+  }
+  i {
+    vertical-align: bottom;
+    position: relative;
+    top: 0.1em;
+  }
 }
