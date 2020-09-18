@@ -1,1 +1,1 @@
-from site import app
+from personalsite import app
