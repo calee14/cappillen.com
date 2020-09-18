@@ -16,4 +16,4 @@ app.config.from_object(Config)
 
 
 # Import all views
-import site.views
+import personalsite.views

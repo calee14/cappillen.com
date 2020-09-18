@@ -1,4 +1,4 @@
-from certhasher import app
+from personalsite import app
 from flask import render_template, make_response, url_for, send_file, abort, flash, request, redirect
 import numpy as np
 import os
