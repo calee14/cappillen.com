@@ -1,6 +1,6 @@
 $(function() {
   $(".p2").typed({
-    strings: ["DESIGNER", "DEVELOPER", "CREATIVE"],
+    strings: ["iOS DEVELOPER", "HAPPY", "PROGRAMMER"],
     typeSpeed: 50,
     backSpeed: 10,
     backDelay: 2000,
