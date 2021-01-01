@@ -11,8 +11,10 @@ body {
 }
 
 .hero {
-  background: url('') no-repeat center;
+  background-image: url('https://github.com/calee14/cappillen.com/blob/master/personalsite/static/assets/background.JPG?raw=true');
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   background-color: rgba(0,0,0,0.75);
   background-blend-mode: multiply;
   height: 100%;
