@@ -1,5 +1,6 @@
 from personalsite import app
 from flask import render_template, make_response, url_for, send_file, abort, flash, request, redirect
+from flask_jwt_extended import create_access_token, get_jwt, jwt_required
 import os
 import secret
 
@@ -12,6 +13,7 @@ def signin():
     return render_template('signin')
 
 @app.route('/dablog')
+@
 def blog():
     return render_template('bloglist')
 
