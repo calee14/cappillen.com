@@ -1,6 +1,7 @@
 # Import Flask for flask app object
 from flask import Flask
 from config import Config
+from flask_jwt_extended import JWTManager
 
 # import sentry_sdk
 # from sentry_sdk.integrations.flask import FlaskIntegration
@@ -13,6 +14,7 @@ from config import Config
 # Create flask app object
 app = Flask(__name__)
 app.config.from_object(Config)
+jwt = JWTManager(app)
 
 
 # Import all views
