@@ -7,6 +7,18 @@ import secret
 def home():
     return render_template('home.html')
 
+@app.route('/signin')
+def signin():
+    return render_template('signin')
+
+@app.route('/dablog')
+def blog():
+    return render_template('bloglist')
+
+@app.route('/dablog')
+def blogindv():
+    return render_template('blogidnv')
+
 @app.route('/debug-sentry')
 def trigger_error():
     division_by_zero = 1 / 0
