@@ -13,11 +13,12 @@ def signin():
     return render_template('signin')
 
 @app.route('/dablog')
-@
+@jwt_required
 def blog():
     return render_template('bloglist')
 
 @app.route('/dablog')
+@jwt_required
 def blogindv():
     return render_template('blogidnv')
 
