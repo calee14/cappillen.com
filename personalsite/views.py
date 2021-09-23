@@ -22,9 +22,9 @@ def signin():
         access_token = create_access_token(username, additional_claims=additional_claims)
         return jsonify(access_token=access_token)
         
-
 @app.route('/dablog')
-@jwt_required
+@jwt_required   # https://flask-jwt-extended.readthedocs.io/en/stable/_modules/flask_jwt_extended/view_decorators/#jwt_required
+                # The wrap() provided by python is good for defining wrapper functions. helps preserve the meta data (__name__) of the original function.
 def blog():
     data_claim = get_jwt()
     return render_template('bloglist.html')
