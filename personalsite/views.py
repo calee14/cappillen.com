@@ -34,7 +34,7 @@ def blog():
 @jwt_required
 def blogindv():
     story_num = request.args.get('story', default=1, type=int)
-    return render_template('blogidnv.html')
+    return render_template('blogindividual.html')
 
 @app.route('/logout', methods=['POST'])
 def logout():
