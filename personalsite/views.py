@@ -19,7 +19,7 @@ def signin():
         if username != secret.USERNAME or password != secret.PASSWORD:
             return 'incorrect username'
 
-        # additional_claims = {'jwt':'some audience', 'hello':'there'}
+        additional_claims = {'jwt':'some audience', 'hello':'there'}
         # access_token = create_access_token(identity=username, additional_claims=additional_claims)
 
         # res = make_response()
@@ -27,9 +27,9 @@ def signin():
         # # res.headers['jwt'] = access_token
 
         # set_access_cookies(res, access_token)
-        response = make_response()
+        response = make_response(redirect(url_for('blog')), 302) # 302 is the status code for redirect https://stackoverflow.com/questions/47464961/flask-routing-problems
         response.headers['Access-Control-Allow-Origin'] = '*'
-        access_token = create_access_token(identity=username)
+        access_token = create_access_token(identity=username, additional_claims=additional_claims)
         set_access_cookies(response, access_token)
 
         return response
@@ -44,7 +44,7 @@ def blog():
 
 @app.route('/dastory', methods=['GET'])
 @jwt_required()
-def blogindv():
+def story():
     story_num = request.args.get('story', default=1, type=int)
     return render_template('blogindividual.html')
 
