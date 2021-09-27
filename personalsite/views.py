@@ -48,7 +48,7 @@ def blogindv():
     story_num = request.args.get('story', default=1, type=int)
     return render_template('blogindividual.html')
 
-@app.route('/logout', methods=['POST'])
+@app.route('/logout', methods=['GET'])
 @jwt_required()
 def logout():
     # https://flask-jwt-extended.readthedocs.io/en/stable/refreshing_tokens/
