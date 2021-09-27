@@ -13,6 +13,13 @@ from flask_jwt_extended import JWTManager
 
 # Create flask app object
 app = Flask(__name__)
+app.config['JWT_TOKEN_LOCATION'] = ['cookies']
+app.config['JWT_COOKIE_SECURE'] = True
+app.config['JWT_ACCESS_COOKIE_PATH'] = '/auth'
+app.config['JWT_REFRESH_COOKIE_PATH'] = '/auth/refresh'
+app.config['JWT_COOKIE_CSRF_PROTECT'] = True
+app.config['JWT_COOKIE_SECURE'] = True
+app.config['JWT_CSRF_CHECK_FORM'] = True
 app.config.from_object(Config)
 jwt = JWTManager(app)
 
