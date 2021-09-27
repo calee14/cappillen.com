@@ -29,7 +29,7 @@ def signin():
         # set_access_cookies(res, access_token)
         response = make_response()
         response.headers['Access-Control-Allow-Origin'] = '*'
-        access_token = create_access_token(identity="example_user")
+        access_token = create_access_token(identity=username)
         set_access_cookies(response, access_token)
 
         return response
