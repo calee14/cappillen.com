@@ -19,17 +19,20 @@ def signin():
         if username != secret.USERNAME or password != secret.PASSWORD:
             return 'incorrect username'
 
-        additional_claims = {'jwt':'some audience', 'hello':'there'}
-        access_token = create_access_token(identity=username)
+        # additional_claims = {'jwt':'some audience', 'hello':'there'}
+        # access_token = create_access_token(identity=username, additional_claims=additional_claims)
 
-        
-        res = make_response(redirect(url_for('blog'), 200))
+        # res = make_response()
         # res.headers["Access-Control-Allow-Origin"] = "*"
-        # res.headers['jwt'] = access_token
+        # # res.headers['jwt'] = access_token
 
-        set_access_cookies(res, access_token)
+        # set_access_cookies(res, access_token)
+        response = make_response()
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        access_token = create_access_token(identity="example_user")
+        set_access_cookies(response, access_token)
 
-        return res
+        return response
         
 @app.route('/dastoryhub', methods=['GET'])
 @jwt_required()   # https://flask-jwt-extended.readthedocs.io/en/stable/_modules/flask_jwt_extended/view_decorators/#jwt_required
@@ -46,6 +49,7 @@ def blogindv():
     return render_template('blogindividual.html')
 
 @app.route('/logout', methods=['POST'])
+@jwt_required()
 def logout():
     # https://flask-jwt-extended.readthedocs.io/en/stable/refreshing_tokens/
     # for removing tokens
