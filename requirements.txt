@@ -15,7 +15,7 @@ future==0.17.1
 idna==2.6
 ipaddress==1.0.22
 itsdangerous==0.24
-Jinja2==2.9.6
+Jinja2==2.11.3
 lxml==4.2.0
 macholib==1.5.1
 MarkupSafe==1.0
