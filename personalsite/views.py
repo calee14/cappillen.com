@@ -20,13 +20,8 @@ def signin():
             return 'incorrect username'
 
         additional_claims = {'jwt':'some audience', 'hello':'there'}
-        # access_token = create_access_token(identity=username, additional_claims=additional_claims)
 
-        # res = make_response()
-        # res.headers["Access-Control-Allow-Origin"] = "*"
-        # # res.headers['jwt'] = access_token
-
-        # set_access_cookies(res, access_token)
+        # create res to set cookie and redirect to blog
         response = make_response(redirect(url_for('blog')), 302) # 302 is the status code for redirect https://stackoverflow.com/questions/47464961/flask-routing-problems
         response.headers['Access-Control-Allow-Origin'] = '*'
         access_token = create_access_token(identity=username, additional_claims=additional_claims)
