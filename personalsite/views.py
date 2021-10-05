@@ -34,7 +34,7 @@ def signin():
                 # The wrap() provided by python is good for defining wrapper functions. helps preserve the meta data (__name__) of the original function.
 def blog():
     data_claim = get_jwt()
-    # return jsonify(hello=data_claim['hello'])
+    claims = jsonify(hello=data_claim['hello'])
     return render_template('bloglist.html')
 
 @app.route('/dastory', methods=['GET'])
