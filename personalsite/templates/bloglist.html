@@ -29,7 +29,7 @@
       {% for story in stories %}
           <h2>{{ story['title'] }}</h2>
           <p>{{ story['paragraphs'][0] }}</p>
-          <a>Read More...</a>
+          <a href="{{ url_for('story') }}?story={{ story['title'] }}">Read More...</a>
       {% endfor%}
     </div>
     
