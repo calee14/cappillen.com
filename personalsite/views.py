@@ -32,11 +32,19 @@ def signin():
 
         return response
 
-stories = [{"title": 'hello there', "paragraphs": ['hello', 'there']}]    
+
 @app.route('/dastoryhub', methods=['GET'])
 @jwt_required()     # https://flask-jwt-extended.readthedocs.io/en/stable/_modules/flask_jwt_extended/view_decorators/#jwt_required
                     # The wrap() provided by python is good for defining wrapper functions. helps preserve the meta data (__name__) of the original function.
 def blog():
+    '''
+        metadata: 
+            all blog files with display date first in format %d-%m-%y where all will take up two char
+            blog file will be .txt files
+            each paragraph belongs on one line
+    '''
+    stories = [{"title": '09-17-21 Hello There', "paragraphs": ['hello', 'there']}] # NOTE: Temporary data
+
     data_claim = get_jwt()
     claims = jsonify(hello=data_claim['hello'])
 
@@ -44,7 +52,7 @@ def blog():
     blog_path = join(dir_path, 'blogs')
 
     all_story_files = [f for f in listdir(blog_path) if isfile(join(blog_path, f))]
-    all_story_files.sort(key = lambda date: datetime.strptime(date[:-4], '%m-%d-%y'))
+    all_story_files.sort(key = lambda date: datetime.strptime(date[0:8], '%m-%d-%y'), reverse=True) # sort stories
     
     for fileName in all_story_files:
         file_dir = join(blog_path, fileName)
