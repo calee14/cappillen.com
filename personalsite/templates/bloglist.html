@@ -24,6 +24,12 @@
   </head>
 
   <body>
+    <h1>Hey, cdubs! Welcome to my stories!</h1>
+    {% for story in stories %}
+        <h2>{{ story['title'] }}</h2>
+        <p>{{ story['paragraphs'][0] }}</p>
+        <a>Read More...</a>
+    {% endfor%}
     
     <!-- scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
