@@ -28,14 +28,15 @@ def signin():
         set_access_cookies(response, access_token)
 
         return response
-        
+
+stories = [{"title": 'hello', "paragraphs": ['hello', 'there']}, {"title": 'hello there', "paragraphs": ['hello', 'there']}]    
 @app.route('/dastoryhub', methods=['GET'])
 @jwt_required()   # https://flask-jwt-extended.readthedocs.io/en/stable/_modules/flask_jwt_extended/view_decorators/#jwt_required
                 # The wrap() provided by python is good for defining wrapper functions. helps preserve the meta data (__name__) of the original function.
 def blog():
     data_claim = get_jwt()
     claims = jsonify(hello=data_claim['hello'])
-    return render_template('bloglist.html')
+    return render_template('bloglist.html', stories=stories)
 
 @app.route('/dastory', methods=['GET'])
 @jwt_required()
