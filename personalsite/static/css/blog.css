@@ -3,3 +3,15 @@
 body {
     font-family: 'Merriweather', serif;
 }
+
+.container{ 
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+@media screen and (max-width: 800px) {
+    .container{ 
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+  }
