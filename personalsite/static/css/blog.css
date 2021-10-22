@@ -9,6 +9,9 @@ body {
     padding-right: 10%;
 }
 
+p {
+    width: 800px;
+}
 @media screen and (max-width: 800px) {
     .container{ 
         padding-left: 2%;
