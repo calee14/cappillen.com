@@ -43,7 +43,7 @@ def blog():
             blog file will be .txt files
             each paragraph belongs on one line
     '''
-    stories = [{"title": '09-17-21 Hello There', "paragraphs": ['hello', 'there']}] # NOTE: Temporary data
+    stories = []
 
     data_claim = get_jwt()
     claims = jsonify(hello=data_claim['hello'])
@@ -66,9 +66,18 @@ def blog():
 @app.route('/dastory', methods=['GET'])
 @jwt_required()
 def story():
-    story_num = request.args.get('story', default="Hello There", type=str)
+    story_title = request.args.get('story', default="Hello There", type=str)
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    blog_path = join(dir_path, 'blogs')
+    story_path = join(blog_path, story_title+'.txt')
+    story = {}
+    with open(story_path) as file:
+        lines = file.readlines()
+        lines = [line.rstrip() for line in lines]
+        story_obj = {'title' : story_title, 'paragraphs': lines}
+        story = story_obj
 
-    return render_template('blogindividual.html')
+    return render_template('blogindividual.html', story=story)
 
 @app.route('/logout', methods=['GET'])
 @jwt_required()
