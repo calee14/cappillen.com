@@ -13,7 +13,7 @@
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/2.0.0/trianglify.min.js"></script>
 
     <!-- styles -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/blogindividual.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/blog.css')}}">
     <link rel="stylesheet" type="text/css" href="static/css/footer.css">
     <link href='https://fonts.googleapis.com/css?family=Titillium Web' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900">
@@ -24,9 +24,14 @@
   </head>
 
   <body>
-
-    <h1>Story Time</h1>
-
+    <div class="container">
+      <h2>{{ story['title'] }}</h2>
+      {% for p in story['paragraphs'] %}
+        <p>{{ p }}</p>
+      {% endfor%}
+      <a href="{{ url_for('blog') }}">See all stories...</a>
+    </div>
+    
 
     <!-- scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
