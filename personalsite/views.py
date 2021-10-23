@@ -4,8 +4,18 @@ from flask_jwt_extended import create_access_token, get_jwt, jwt_required, set_a
 import os
 from os import listdir
 from os.path import isfile, join
-import secret
 from datetime import datetime
+
+USERNAME = ''
+PASSWORD = ''
+
+try:
+    import secret
+    USERNAME = secret.USERNAME
+    PASSWORD = secret.PASSWORD
+except:
+    USERNAME = os.environ['USERNAME']
+    PASSWORD = os.environ['PASSWORD']
 
 @app.route('/')
 def home():
@@ -19,7 +29,7 @@ def signin():
         username = request.form['username']
         password = request.form['password']
         print(username, password)
-        if username != secret.USERNAME or password != secret.PASSWORD:
+        if username != USERNAME or password != PASSWORD:
             return 'incorrect username'
 
         additional_claims = {'jwt':'some audience', 'hello':'there'}
