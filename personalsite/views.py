@@ -6,6 +6,7 @@ from os import listdir
 from os.path import isfile, join
 from datetime import datetime
 
+ENCRYPTIONKEY = ''
 USERNAME = ''
 PASSWORD = ''
 
@@ -13,9 +14,11 @@ try:
     import secret
     USERNAME = secret.USERNAME
     PASSWORD = secret.PASSWORD
+    ENCRYPTIONKEY = secret.ENCRYPTIONKEY
 except:
     USERNAME = os.environ['USERNAME']
     PASSWORD = os.environ['PASSWORD']
+    ENCRYPTIONKEY = os.environ['ENCRYPTIONKEY']
 
 @app.route('/')
 def home():
