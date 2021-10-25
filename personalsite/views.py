@@ -1,3 +1,4 @@
+from encrypt import encrypt_files
 from personalsite import app, jwt
 from flask import render_template, make_response, url_for, send_file, abort, flash, request, redirect, jsonify, Response
 from flask_jwt_extended import create_access_token, get_jwt, jwt_required, set_access_cookies, unset_jwt_cookies
@@ -5,6 +6,7 @@ import os
 from os import listdir
 from os.path import isfile, join
 from datetime import datetime
+from cryptography.fernet import Fernet
 
 ENCRYPTIONKEY = ''
 USERNAME = ''
@@ -67,13 +69,34 @@ def blog():
     all_story_files = [f for f in listdir(blog_path) if isfile(join(blog_path, f))]
     all_story_files.sort(key = lambda date: datetime.strptime(date[0:8], '%m-%d-%y'), reverse=True) # sort stories
     
+    fernet = Fernet(ENCRYPTIONKEY)
+
     for fileName in all_story_files:
         file_dir = join(blog_path, fileName)
+
         with open(file_dir) as file:
-             lines = file.readlines()
-             lines = [line.rstrip() for line in lines]
-             story_obj = {'title' : fileName[:-4], 'paragraphs': lines}
-             stories.append(story_obj)
+            encrypted = file.read()
+
+        decrypted = fernet.decrypt(bytes(encrypted, 'utf-8'))
+
+        decrypted = decrypted.decode('utf-8')
+        
+        lines = []
+        idx = 0
+        while decrypted.find('\n'):
+            idx = decrypted.find('\n')
+            lines.append(decrypted[0:idx])
+            decrypted = decrypted[idx:-1]
+            print(decrypted)
+        
+        print(lines)
+        # print(decrypted.decode('utf-8').find('\n'))
+        return 'hello'
+        lines = file.readlines()
+        lines = [line.rstrip() for line in lines]
+        story_obj = {'title' : fileName[:-4], 'paragraphs': lines}
+        stories.append(story_obj)
+
     return render_template('bloglist.html', stories=stories)
 
 @app.route('/dastory', methods=['GET'])
