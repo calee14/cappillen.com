@@ -78,22 +78,18 @@ def blog():
             encrypted = file.read()
 
         decrypted = fernet.decrypt(bytes(encrypted, 'utf-8'))
-
         decrypted = decrypted.decode('utf-8')
         
         lines = []
         idx = 0
-        while decrypted.find('\n'):
+
+        while decrypted.find('\n') >= 0:
             idx = decrypted.find('\n')
             lines.append(decrypted[0:idx])
-            decrypted = decrypted[idx:-1]
-            print(decrypted)
+            decrypted = decrypted[idx+1:-1]
+            
+        lines.append(decrypted)
         
-        print(lines)
-        # print(decrypted.decode('utf-8').find('\n'))
-        return 'hello'
-        lines = file.readlines()
-        lines = [line.rstrip() for line in lines]
         story_obj = {'title' : fileName[:-4], 'paragraphs': lines}
         stories.append(story_obj)
 
