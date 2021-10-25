@@ -12,7 +12,7 @@ def decrypt_file(encrypted, key):
     while decrypted.find('\n') >= 0:
         idx = decrypted.find('\n')
         lines.append(decrypted[0:idx])
-        decrypted = decrypted[idx+1:-1]
+        decrypted = decrypted[idx+1:]
             
     lines.append(decrypted)
 
