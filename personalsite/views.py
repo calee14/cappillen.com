@@ -7,6 +7,7 @@ from os import listdir
 from os.path import isfile, join
 from datetime import datetime
 from cryptography.fernet import Fernet
+from personalsite.decrypt import decrypt_file
 
 ENCRYPTIONKEY = ''
 USERNAME = ''
@@ -68,8 +69,6 @@ def blog():
 
     all_story_files = [f for f in listdir(blog_path) if isfile(join(blog_path, f))]
     all_story_files.sort(key = lambda date: datetime.strptime(date[0:8], '%m-%d-%y'), reverse=True) # sort stories
-    
-    fernet = Fernet(ENCRYPTIONKEY)
 
     for fileName in all_story_files:
         file_dir = join(blog_path, fileName)
@@ -77,18 +76,7 @@ def blog():
         with open(file_dir) as file:
             encrypted = file.read()
 
-        decrypted = fernet.decrypt(bytes(encrypted, 'utf-8'))
-        decrypted = decrypted.decode('utf-8')
-        
-        lines = []
-        idx = 0
-
-        while decrypted.find('\n') >= 0:
-            idx = decrypted.find('\n')
-            lines.append(decrypted[0:idx])
-            decrypted = decrypted[idx+1:-1]
-            
-        lines.append(decrypted)
+        lines = decrypt_file(encrypted, ENCRYPTIONKEY)
         
         story_obj = {'title' : fileName[:-4], 'paragraphs': lines}
         stories.append(story_obj)
@@ -99,15 +87,21 @@ def blog():
 @jwt_required()
 def story():
     story_title = request.args.get('story', default="Hello There", type=str)
+
     dir_path = os.path.dirname(os.path.realpath(__file__))
     blog_path = join(dir_path, 'blogs')
+
     story_path = join(blog_path, story_title+'.txt')
+
     story = {}
+
     with open(story_path) as file:
-        lines = file.readlines()
-        lines = [line.rstrip() for line in lines]
-        story_obj = {'title' : story_title, 'paragraphs': lines}
-        story = story_obj
+        encrypted = file.read()
+
+    lines = decrypt_file(encrypted, ENCRYPTIONKEY)
+    
+    story_obj = {'title' : story_title, 'paragraphs': lines}
+    story = story_obj
 
     return render_template('blogindividual.html', story=story)
 
