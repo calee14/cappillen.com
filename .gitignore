@@ -150,5 +150,5 @@ cython_debug/
 # Hide secrets
 secret.py
 secret.txt
-blogs/
+blogs_unencrypted/
 *.key
