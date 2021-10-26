@@ -22,7 +22,9 @@ code {
 }
 
 .container {
-  max-width: 900px;
+  padding-left: 50px;
+  padding-right: 50px;
+
 }
 
 .sage-title {
@@ -39,14 +41,20 @@ code {
   -webkit-font-smoothing: antialiased;
   margin: 0px;
   transition: 0.05s;
-  overflow: auto;
+  white-space:normal;
+  word-wrap: break-word;
   /* -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #111; */
 }
 
 @media screen and (max-width: 800px) {
+  .container {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
   .sage-title {
+    white-space:normal;
     word-wrap: break-word;
-    overflow: auto;
+    line-height: 169px;
   }
 }
