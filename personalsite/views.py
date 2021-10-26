@@ -1,4 +1,3 @@
-from encrypt import encrypt_files
 from personalsite import app, jwt
 from flask import render_template, make_response, url_for, send_file, abort, flash, request, redirect, jsonify, Response
 from flask_jwt_extended import create_access_token, get_jwt, jwt_required, set_access_cookies, unset_jwt_cookies
