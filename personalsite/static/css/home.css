@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 html, body {
   height: 100%;
 }
@@ -5,96 +7,46 @@ html, body {
 body {
   font-family: 'Roboto';
   text-align: center;
-  color: #f5f5f5;
+  color: #010101;
+  background-color: #010101;
   padding: 0;
   margin: 0;
+  font-family: 'Anton', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.hero {
-  background-image: url('https://github.com/calee14/cappillen.com/blob/master/personalsite/static/assets/background.JPG?raw=true');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: rgba(0,0,0,0.75);
-  background-blend-mode: multiply;
-  height: 100%;
-  width: 100%;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-.inner-text {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 50px;
-  @media only screen and (min-width: 320px) {
-    padding-left: 15px;
-    padding-right: 15px; 
-  }
-  @media only screen and (min-width: 400px) {
-    padding-left: 40px;
-    padding-right: 40px; 
-  }
-  @media only screen and (min-width: 680px) {
-    font-size: 75px;
-  }
-  @media only screen and (min-width: 950px) {
-    font-size: 100px;
-  }
+.container {
+  max-width: 900px;
 }
 
-.p1 {
-  display: inline-block;
-  font-size: 1em;
-  font-weight: 900;
-  marign: 0;
-  line-height: 1;
-  @media only screen and (max-width: 465px) {
-    display: block;
-    position: absolute;
-    top: -25%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+.sage-title {
+  max-width: 900px;
+  font-size: 169px;
+  background: url(../assets/background.JPG) -600px -600px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  word-wrap: break-word;
+  font-weight: 20;
+  -webkit-font-smoothing: antialiased;
+  margin: 0px;
+  transition: 0.05s;
+  overflow: auto;
+  /* -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #111; */
 }
 
-.p2 {
-  display: inline-block;
-  font-size: 1em;
-  font-weight: 100;
-  marign: 0;
-  line-height: 1;
-  color: #4FC3F7;
-  @media only screen and (max-width: 465px) {
-    position: relative;
-    top: 0.6em;
-  }
-}
-
-.hero-down {
-  position: absolute;
-  bottom: 0;
-  font-size: 2em;
-  width: 2em;
-  height: 2em;
-  color: #f5f5f5;
-  border-radius: 100%;
-  &:hover, &:focus {
-    color: #ccc;
-  }
-  &:active {
-    color: #f5f5f5;
-  }
-  .btn-react {
-    background-color: #f5f5f5;
-    height: 100%;
-    width: 100%;
-    border-radius: 100%;
-    opacity: 0;
-    position: absolute;
-  }
-  i {
-    vertical-align: bottom;
-    position: relative;
-    top: 0.1em;
+@media screen and (max-width: 800px) {
+  .sage-title {
+    word-wrap: break-word;
+    overflow: auto;
   }
 }
