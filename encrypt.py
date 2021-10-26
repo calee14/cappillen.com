@@ -11,8 +11,11 @@ def gen_key():
         filekey.write(key)
 
 def encrypt_files(dir_unencrypted, dir_encrypted):
-    with open('secretkey.key', 'rb') as filekey:
-        key = filekey.read()
+    try:
+        with open('secretkey.key', 'rb') as filekey:
+            key = filekey.read()
+    except:
+        key = os.environ['ENCRYPTIONKEY']
     
     fernet = Fernet(key)
 
