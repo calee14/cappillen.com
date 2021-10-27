@@ -112,3 +112,7 @@ def logout():
     res = make_response(redirect(url_for('signin')))
     unset_jwt_cookies(res)
     return res
+
+@jwt.unauthorized_loader
+def custom_unauthorized_response(_err):
+    return redirect(url_for('signin'))
