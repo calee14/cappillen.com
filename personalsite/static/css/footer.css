@@ -3,8 +3,8 @@
 .footer-right{float:right;}
 
 /* ---- css for social media icons ---- */
-.fa{padding:20px;font-size:30px;width:50px;text-align:center;text-decoration:none;}
-.fab{padding:20px;font-size:30px;width:50px;text-align:center;text-decoration:none;}
+.fa{padding:20px;font-size:30px;width:30px;text-align:center;text-decoration:none;}
+.fab{padding:20px;font-size:30px;width:30px;text-align:center;text-decoration:none;}
 @media (min-width:800px){
     .fa:hover{opacity:0.7;}
 }
