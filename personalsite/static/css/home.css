@@ -5,8 +5,6 @@ html, body {
 }
 
 body {
-  font-family: 'Roboto';
-  text-align: center;
   color: #010101;
   background-color: #010101;
   padding: 0;
@@ -16,9 +14,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+p {
+    text-decoration: none;
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-weight: 569;
+    color: #f1f1f1;
+    max-width: 555px;
 }
 
 .container {
@@ -30,7 +32,7 @@ code {
 .sage-title {
   max-width: 900px;
   font-size: 169px;
-  background: url(../assets/background.JPG) -200px -90px;
+  background: url(../assets/background.JPG) -600px -90px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: left;
@@ -40,7 +42,6 @@ code {
   font-weight: 20;
   -webkit-font-smoothing: antialiased;
   margin: 0px;
-  transition: 0.05s;
   white-space:normal;
   word-wrap: break-word;
   /* -webkit-text-stroke-width: 1px;
@@ -49,8 +50,7 @@ code {
 
 @media screen and (max-width: 800px) {
   .container {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 15px;
   }
   .sage-title {
     white-space:normal;
