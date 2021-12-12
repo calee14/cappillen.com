@@ -3,6 +3,7 @@ import os
 from os import listdir
 from os.path import isfile, join
 from datetime import datetime
+from pathlib import Path
 
 def gen_key():
     key = Fernet.generate_key()
@@ -17,9 +18,11 @@ def encrypt_files(dir_unencrypted, dir_encrypted):
     except:
         key = os.environ['ENCRYPTIONKEY']
     
+    Path(dir_encrypted).mkdir(parents=True, exist_ok=True)
+
     fernet = Fernet(key)
 
-    all_story_files = [f for f in listdir(dir_unencrypted) if isfile(join(dir_unencrypted, f))]
+    all_story_files = [f for f in listdir(dir_unencrypted) if isfile(join(dir_unencrypted, f) and f[0] != '.')]
     all_story_files.sort(key = lambda date: datetime.strptime(date[0:8], '%m-%d-%y'), reverse=True) # sort stories
 
     previously_encrypted_files = [f for f in listdir(dir_encrypted) if isfile(join(dir_encrypted, f))]
