@@ -79,8 +79,19 @@ def blog():
         
         story_obj = {'title' : fileName[:-4], 'paragraphs': lines}
         stories.append(story_obj)
+    
+    dir_sorted = [x[0][x[0].rfind('/')+1:] for x in os.walk(blog_path)][1:] # get all directories and remove the root dir that we're recursively walking. also just get the quarter director name
+    dir_sorted.sort(reverse=True) # sort dir
+    print(dir_sorted)
+
 
     return render_template('bloglist.html', stories=stories)
+    
+@app.route('/daquarter', methods=['GET'])
+@jwt_required()
+def quarter():
+    quarter_name = request.args.get('quarter', default="Hello There", type=str)
+
 
 @app.route('/dastory', methods=['GET'])
 @jwt_required()
