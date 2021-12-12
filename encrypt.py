@@ -37,7 +37,14 @@ def encrypt_files(dir_unencrypted, dir_encrypted):
         with open(encryped_file_dir, 'wb') as encyrpted_file:
             encyrpted_file.write(encrypted)
 
+def encrypt_dir(dir_unencrypted, dir_encrypted):
+    dir_sorted = [x[0] for x in os.walk(dir_unencrypted)][1:] # get all directories and remove the root dir that we're recursively walking
+    dir_sorted.sort(reverse=False) # sort dir
+    print(dir_sorted)
+
+
 dir_path = os.path.dirname(os.path.realpath(__file__))
 blog_unencrypted_path = join(dir_path, 'personalsite/blogs_unencrypted')
 blog_encrypted_path = join(dir_path, 'personalsite/blogs')
 encrypt_files(blog_unencrypted_path, blog_encrypted_path)
+encrypt_dir(blog_unencrypted_path, blog_encrypted_path)
