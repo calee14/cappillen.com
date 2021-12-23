@@ -90,7 +90,13 @@ def blog():
 @app.route('/daquarter', methods=['GET'])
 @jwt_required()
 def quarter():
+    # get the path that holds the blogs for the quarter
     quarter_name = request.args.get('quarter', default="Hello There", type=str)
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    quarter_path = join(dir_path, join('blogs', quarter_name))
+    print(quarter_path)
+    
+    return 'hello'
 
 
 @app.route('/dastory', methods=['GET'])
