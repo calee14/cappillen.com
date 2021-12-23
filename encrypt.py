@@ -22,7 +22,7 @@ def encrypt_files(dir_unencrypted, dir_encrypted):
 
     fernet = Fernet(key)
 
-    all_story_files = [f for f in listdir(dir_unencrypted) if isfile(join(dir_unencrypted, f) and f[0] != '.')]
+    all_story_files = [f for f in listdir(dir_unencrypted) if os.path.isfile(join(dir_unencrypted, f)) and f[0] != '.']
     all_story_files.sort(key = lambda date: datetime.strptime(date[0:8], '%m-%d-%y'), reverse=True) # sort stories
 
     previously_encrypted_files = [f for f in listdir(dir_encrypted) if isfile(join(dir_encrypted, f))]
