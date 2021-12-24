@@ -84,8 +84,7 @@ def blog():
     dir_sorted.sort(reverse=True) # sort dir
     print(dir_sorted)
 
-
-    return render_template('bloglist.html', stories=stories)
+    return render_template('bloglist.html', stories=stories, quarters=dir_sorted)
     
 @app.route('/daquarter', methods=['GET'])
 @jwt_required()
@@ -95,8 +94,24 @@ def quarter():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     quarter_path = join(dir_path, join('blogs', quarter_name))
     print(quarter_path)
-    
-    return 'hello'
+
+    stories = []
+
+    all_story_files = [f for f in listdir(quarter_path) if isfile(join(quarter_path, f))]
+    all_story_files.sort(key = lambda date: datetime.strptime(date[0:8], '%m-%d-%y'), reverse=True) # sort stories
+
+    for fileName in all_story_files:
+        file_dir = join(quarter_path, fileName)
+
+        with open(file_dir) as file:
+            encrypted = file.read()
+
+        lines = decrypt_file(encrypted, ENCRYPTIONKEY)
+        
+        story_obj = {'title' : fileName[:-4], 'paragraphs': lines}
+        stories.append(story_obj)
+
+    return render_template('quarterlist.html', quarter=quarter_name, stories=stories)
 
 
 @app.route('/dastory', methods=['GET'])
