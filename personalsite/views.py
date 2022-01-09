@@ -1,6 +1,6 @@
 from personalsite import app, jwt
 from flask import render_template, make_response, url_for, send_file, abort, flash, request, redirect, jsonify, Response
-from flask_jwt_extended import create_access_token, get_jwt, jwt_required, set_access_cookies, unset_jwt_cookies
+from flask_jwt_extended import create_access_token, get_jwt, jwt_required, set_access_cookies, set_refresh_cookies, unset_jwt_cookies
 import os
 from os import listdir
 from os.path import isfile, join
@@ -40,7 +40,7 @@ def signin():
         additional_claims = {'jwt':'some audience', 'hello':'there'}
 
         # create res to set cookie and redirect to blog
-        response = make_response(redirect(url_for('blog')), 302) # 302 is the status code for redirect https://stackoverflow.com/questions/47464961/flask-routing-problems
+        response = make_response(redirect(url_for('blog'))) # 302 is the status code for redirect https://stackoverflow.com/questions/47464961/flask-routing-problems
         response.headers['Access-Control-Allow-Origin'] = '*'
         access_token = create_access_token(identity=username, additional_claims=additional_claims)
         set_access_cookies(response, access_token)
@@ -66,7 +66,7 @@ def blog():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     blog_path = join(dir_path, 'blogs')
 
-    all_story_files = [f for f in listdir(blog_path) if isfile(join(blog_path, f))]
+    all_story_files = [f for f in listdir(blog_path) if os.path.isfile(join(blog_path, f)) and f[0] != '.']
     all_story_files.sort(key = lambda date: datetime.strptime(date[0:8], '%m-%d-%y'), reverse=True) # sort stories
 
     for fileName in all_story_files:
@@ -80,7 +80,8 @@ def blog():
         story_obj = {'title' : fileName[:-4], 'paragraphs': lines}
         stories.append(story_obj)
     
-    dir_sorted = [x[0][x[0].rfind('/')+1:] for x in os.walk(blog_path)][1:] # get all directories and remove the root dir that we're recursively walking. also just get the quarter director name
+    # get all directories and remove the root dir that we're recursively walking. also just get the quarter director name
+    dir_sorted = [x[0][x[0].rfind('/')+1:] for x in os.walk(blog_path)][1:] 
     dir_sorted.sort(reverse=True) # sort dir
     print(dir_sorted)
 
@@ -123,6 +124,16 @@ def story():
     blog_path = join(dir_path, 'blogs')
 
     story_path = join(blog_path, story_title+'.txt')
+    
+    if isfile(story_path) == False:
+        dir_sorted = [x[0][x[0].rfind('/')+1:] for x in os.walk(blog_path)][1:] 
+        for dir_path in dir_sorted:
+            story_path_temp = join(blog_path, dir_path, story_title + '.txt') 
+            if isfile(story_path_temp):
+                story_path = story_path_temp
+        
+        if isfile(story_path) == False:
+            return abort(404)
 
     story = {}
 
@@ -147,4 +158,5 @@ def logout():
 
 @jwt.unauthorized_loader
 def custom_unauthorized_response(_err):
+    print(_err)
     return redirect(url_for('signin'))
