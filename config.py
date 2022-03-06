@@ -12,7 +12,7 @@ class Config(object):
     SECRET_KEY = os.urandom(32)
     JWT_SECRET_KEY = JWT_SECRET_KEY
     JWT_TOKEN_LOCATION = ['cookies']
-    JWT_ACCESS_TOKEN_EXPIRES = datetime.timedelta(seconds=1800)
+    JWT_ACCESS_TOKEN_EXPIRES = datetime.timedelta(days=30)
     JWT_COOKIE_SECURE = False
     JWT_REFRESH_TOKEN_EXPIRES = datetime.timedelta(days=30)
     JWT_COOKIE_CSRF_PROTECT = True 
