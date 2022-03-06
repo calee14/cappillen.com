@@ -27,8 +27,12 @@ def home():
     return render_template('home.html')
 
 @app.route('/signin', methods=['GET', 'POST'])
+@jwt_required(optional=True)
 def signin():
     if request.method == 'GET':
+        token = get_jwt()
+        if not not token:
+            return redirect(url_for('blog'))
         return render_template('signin.html')
     if request.method == 'POST':
         username = request.form['username']
