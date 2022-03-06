@@ -1,4 +1,6 @@
 import os
+import datetime
+
 JWT_SECRET_KEY = ''
 try:
     from secret import JWT_SECRET_KEY
@@ -9,3 +11,10 @@ class Config(object):
     DEBUG = True
     SECRET_KEY = os.urandom(32)
     JWT_SECRET_KEY = JWT_SECRET_KEY
+    JWT_TOKEN_LOCATION = ['cookies']
+    JWT_ACCESS_TOKEN_EXPIRES = datetime.timedelta(seconds=1800)
+    JWT_COOKIE_SECURE = False
+    JWT_REFRESH_TOKEN_EXPIRES = datetime.timedelta(days=30)
+    JWT_COOKIE_CSRF_PROTECT = True 
+    JWT_ACCESS_CSRF_HEADER_NAME = "X-CSRF-TOKEN-ACCESS"
+    JWT_REFRESH_CSRF_HEADER_NAME = "X-CSRF-TOKEN-REFRESH"
