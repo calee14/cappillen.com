@@ -31,6 +31,7 @@ def home():
 def signin():
     if request.method == 'GET':
         token = get_jwt()
+        print(token)
         if not not token:
             return redirect(url_for('blog'))
         return render_template('signin.html')
@@ -152,7 +153,6 @@ def story():
     return render_template('blogindividual.html', story=story)
 
 @app.route('/logout', methods=['GET'])
-@jwt_required()
 def logout():
     # https://flask-jwt-extended.readthedocs.io/en/stable/refreshing_tokens/
     # for removing tokens
@@ -163,4 +163,12 @@ def logout():
 @jwt.unauthorized_loader
 def custom_unauthorized_response(_err):
     print(_err)
-    return redirect(url_for('signin'))
+    res = make_response(redirect(url_for('signin')))
+    unset_jwt_cookies(res)
+    return res
+
+@jwt.expired_token_loader
+def my_expired_token_callback(jwt_header, jwt_payload):
+    res = make_response(redirect(url_for('signin')))
+    unset_jwt_cookies(res)
+    return res
