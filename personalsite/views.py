@@ -1,6 +1,6 @@
 from personalsite import app, jwt
 from flask import render_template, make_response, url_for, send_file, abort, flash, request, redirect, jsonify, Response
-from flask_jwt_extended import create_access_token, get_jwt, jwt_required, set_access_cookies, set_refresh_cookies, unset_jwt_cookies
+from flask_jwt_extended import create_access_token, get_jwt, jwt_required, set_access_cookies, set_refresh_cookies, unset_jwt_cookies, create_refresh_token
 import os
 from os import listdir
 from os.path import isfile, join
@@ -27,7 +27,7 @@ def home():
     return render_template('home.html')
 
 @app.route('/signin', methods=['GET', 'POST'])
-@jwt_required(optional=True)
+@jwt_required(optional=True, fresh=False, refresh=False)
 def signin():
     if request.method == 'GET':
         token = get_jwt()
@@ -48,7 +48,9 @@ def signin():
         response = make_response(redirect(url_for('blog'))) # 302 is the status code for redirect https://stackoverflow.com/questions/47464961/flask-routing-problems
         response.headers['Access-Control-Allow-Origin'] = '*'
         access_token = create_access_token(identity=username, additional_claims=additional_claims)
+        refresh_token = create_refresh_token(identity=username)
         set_access_cookies(response, access_token)
+        set_refresh_cookies(response, refresh_token)
 
         return response
 
@@ -170,5 +172,5 @@ def custom_unauthorized_response(_err):
 @jwt.expired_token_loader
 def my_expired_token_callback(jwt_header, jwt_payload):
     res = make_response(redirect(url_for('signin')))
-    unset_jwt_cookies(res)
+    # unset_jwt_cookies(res)
     return res
