@@ -11,6 +11,7 @@ class Config(object):
     DEBUG = True
     SECRET_KEY = os.urandom(32)
     JWT_SECRET_KEY = JWT_SECRET_KEY
+    JWT_SESSION_COOKIE=False
     JWT_TOKEN_LOCATION = ['cookies']
     JWT_ACCESS_TOKEN_EXPIRES = datetime.timedelta(days=30)
     JWT_COOKIE_SECURE = False
