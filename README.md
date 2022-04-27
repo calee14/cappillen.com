@@ -6,12 +6,12 @@
   - https://www.gradient-animator.com/
   - use cloudflare for cdn (net to the moon)
 
-# Heroku cli
+# Heroku CLI
 move to branch that we want to deploy to heroku
 ```bash
 $ git checkout branch-to-deploy
 ```
-use heroku to add a remote location to deploy our app
+use heroku cli to add a remote location to deploy our app
 ```bash
 $ heroku git:remote -a app-name
 ```
