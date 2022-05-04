@@ -172,7 +172,7 @@ def custom_unauthorized_response(_err):
 @jwt.expired_token_loader
 def my_expired_token_callback(jwt_header, jwt_payload):
     res = make_response(redirect(url_for('signin')))
-    # unset_jwt_cookies(res)
+    unset_jwt_cookies(res)
     return res
 
 @app.route('/c2bd', methods=['GET'])
