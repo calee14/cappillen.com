@@ -1,7 +1,7 @@
 backports.entry-points-selectable==1.1.0
 cffi==1.15.0
 click==8.0.1
-cryptography==35.0.0
+cryptography==39.0.1
 distlib==0.3.3
 filelock==3.1.0
 Flask==1.1.1
