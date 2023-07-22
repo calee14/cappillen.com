@@ -24,5 +24,109 @@
         }
       }
     ]
+  },
+  "D": {
+    "reports": [
+      {
+        "ticker": "D",
+        "date": "31-Mar-2023",
+        "income_report": {
+          "revq": "4.28B -> 3.87B -> 4.69B -> 4.01B -> 5.25B",
+          "rev_growth": 23,
+          "epsq": "0.82 -> -0.58 -> 0.91 -> -0.08 -> 1.17",
+          "eps_growth": 43,
+          "fcfq": "(534M) -> (1.45B) -> (740M) -> (1.34B) -> (134M)",
+          "fcf_growth": 75,
+          "pegq": "10.32 <- 2.39 <- 2.28 <- 2.79",
+          "psq": "2.69 <- 3.14 <- 3.76 <- 4.53"
+        },
+        "earnings_report": {
+          "eps_est": "0.97",
+          "eps_act": "0.99",
+          "eps_surprise": 2,
+          "eps_growth_quarter_year_forecast": "-57, 245",
+          "rev_growth_quarter_year_forecast": "-3, 3",
+          "price_delta": -13
+        }
+      }
+    ]
+  },
+  "DOCN": {
+    "reports": [
+      {
+        "ticker": "DOCN",
+        "date": "31-Mar-2023",
+        "income_report": {
+          "revq": "127.33M -> 133.88M -> 152.12M -> 163M -> 165.13M",
+          "rev_growth": 30,
+          "epsq": "-0.17 -> -0.06 -> 0.1 -> -0.1 -> -0.37",
+          "eps_growth": -118,
+          "fcfq": "5.03M -> 16.76M -> 22.39M -> 22.74M -> 11.11M",
+          "fcf_growth": 121,
+          "pegq": "N/A <- N/A <- N/A <- N/A",
+          "psq": "6.85 <- 4.95 <- 7.82 <- 9.63"
+        },
+        "earnings_report": {
+          "eps_est": "0.28",
+          "eps_act": "0.28",
+          "eps_surprise": 0,
+          "eps_growth_quarter_year_forecast": "210, 804",
+          "rev_growth_quarter_year_forecast": "27, 22",
+          "price_delta": 64
+        }
+      }
+    ]
+  },
+  "NET": {
+    "reports": [
+      {
+        "ticker": "NET",
+        "date": "31-Mar-2023",
+        "income_report": {
+          "revq": "212.17M -> 234.52M -> 253.86M -> 274.7M -> 290.18M",
+          "rev_growth": 37,
+          "epsq": "-0.13 -> -0.2 -> -0.13 -> -0.14 -> -0.12",
+          "eps_growth": 8,
+          "fcfq": "(54.95M) -> 6.65M -> 6.13M -> 34.08M -> 20.81M",
+          "fcf_growth": 138,
+          "pegq": "5.75 <- N/A <- N/A <- N/A",
+          "psq": "20.63 <- 16.39 <- 21.85 <- 18.96"
+        },
+        "earnings_report": {
+          "eps_est": "0.03",
+          "eps_act": "0.08",
+          "eps_surprise": 166,
+          "eps_growth_quarter_year_forecast": "158, 157",
+          "rev_growth_quarter_year_forecast": "30, 31",
+          "price_delta": 25
+        }
+      }
+    ]
+  },
+  "TSLA": {
+    "reports": [
+      {
+        "ticker": "TSLA",
+        "date": "31-Mar-2023",
+        "income_report": {
+          "revq": "18.76B -> 16.93B -> 21.45B -> 24.32B -> 23.33B",
+          "rev_growth": 24,
+          "epsq": "0.95 -> 0.65 -> 0.95 -> 1.07 -> 0.73",
+          "eps_growth": -23,
+          "fcfq": "2.22B -> 621M -> 3.3B -> 1.42B -> 427M",
+          "fcf_growth": -81,
+          "pegq": "N/A <- 1.89 <- 1.08 <- 1.26 <- 1.64",
+          "psq": "N/A <- 8.85 <- 5.68 <- 13.55 <- 12.29"
+        },
+        "earnings_report": {
+          "eps_est": "0.73",
+          "eps_act": "0.81",
+          "eps_surprise": 11,
+          "eps_growth_quarter_year_forecast": "1, -14",
+          "rev_growth_quarter_year_forecast": "30, 9",
+          "price_delta": 46
+        }
+      }
+    ]
   }
 }

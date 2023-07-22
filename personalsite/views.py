@@ -1,13 +1,14 @@
 from personalsite import app, jwt
 from flask import render_template, make_response, url_for, send_file, abort, flash, request, redirect, jsonify, Response, send_file
 from flask_jwt_extended import create_access_token, get_jwt, jwt_required, set_access_cookies, set_refresh_cookies, unset_jwt_cookies, create_refresh_token
-import os
 from os import listdir
 from os.path import isfile, join
 from datetime import datetime
 from cryptography.fernet import Fernet
 from personalsite.decrypt import decrypt_file
 from .src.report import make_print_report, print_report
+import os
+import random
 
 ENCRYPTIONKEY = ''
 USERNAME = ''
@@ -182,5 +183,6 @@ def kbd():
 
 @app.route('/leperbase/api/build', methods=['GET'])
 def leperbase():
-    make_print_report(['CRWD'])
+    tickers = ['CRWD', 'NET', 'TSLA', 'DOCN']
+    make_print_report([tickers[random.randint(0,len(tickers)-1)]])
     return send_file('../report.xlsx', as_attachment=True, attachment_filename='report.xlsx')
