@@ -1,5 +1,5 @@
 from personalsite import app, jwt
-from flask import render_template, make_response, url_for, send_file, abort, flash, request, redirect, jsonify, Response
+from flask import render_template, make_response, url_for, send_file, abort, flash, request, redirect, jsonify, Response, send_file
 from flask_jwt_extended import create_access_token, get_jwt, jwt_required, set_access_cookies, set_refresh_cookies, unset_jwt_cookies, create_refresh_token
 import os
 from os import listdir
@@ -7,6 +7,7 @@ from os.path import isfile, join
 from datetime import datetime
 from cryptography.fernet import Fernet
 from personalsite.decrypt import decrypt_file
+from .src.report import make_print_report, print_report
 
 ENCRYPTIONKEY = ''
 USERNAME = ''
@@ -178,3 +179,8 @@ def my_expired_token_callback(jwt_header, jwt_payload):
 @app.route('/c2bd', methods=['GET'])
 def kbd():
     return render_template('kbd.html')
+
+@app.route('/leperbase/api/build', methods=['GET'])
+def leperbase():
+    make_print_report(['CRWD'])
+    return send_file('../report.xlsx', as_attachment=True, attachment_filename='report.xlsx')
