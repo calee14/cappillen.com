@@ -1,6 +1,6 @@
 from . import *
 class CompanyReport(object):
-    def __init__(self, ticker, date ,income_report: IncomeReport, earnings_report: EarningsReport):
+    def __init__(self, ticker, date ,income_report, earnings_report):
         self.ticker = ticker
         self.date = date
         self.income_report = income_report

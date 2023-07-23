@@ -7,7 +7,7 @@ import time
 import csv
 import pandas as pd
 
-def build_report(ticker) -> CompanyReport:
+def build_report(ticker):
     '''
     Run scraper functions to build report and store
     it into json file.
@@ -41,7 +41,7 @@ def build_report(ticker) -> CompanyReport:
 
     return report
 
-def report_xlsx(reports: list[CompanyReport]):
+def report_xlsx(reports):
 
     income_df = pd.DataFrame(columns=['Revenue', 'Rev. Growth', 'Earnings', 'EPS Growth', 'FCF', 'FCF Growth', 'Price/Earnings/Growth', 'Price/Sales'])
     
@@ -152,14 +152,14 @@ def report_xlsx(reports: list[CompanyReport]):
     workbook.close()
     
 
-def make_print_report(tickers: list[str]):
-    reports: list[CompanyReport] = []
+def make_print_report(tickers):
+    reports = []
     for ticker in tickers:
         # start timer
         start = time.time()
         try:
             # builds report for ticker
-            report: CompanyReport = build_report(ticker)
+            report = build_report(ticker)
             reports.append(report) 
         except Exception as error:
             print(f'Error while scraping for {ticker}:')
@@ -178,7 +178,7 @@ def make_print_report(tickers: list[str]):
     # make the report and local file
     report_xlsx(reports)
 
-def print_report(tickers: list[str]):
+def print_report(tickers):
     reports: list[CompanyReport] = []
     for ticker in tickers:
         _report = get_report(ticker)

@@ -5,7 +5,7 @@ import json
 import os
 import shutil
 
-def store_report(report: CompanyReport):
+def store_report(report):
     '''
     Stores a CompanyReport object into the snapshot.json file
     '''
@@ -48,7 +48,7 @@ def store_report(report: CompanyReport):
         if os.path.exists('temp_snapshot.json'):
             os.remove('temp_snapshot.json')
 
-def get_report(ticker) -> CompanyReport:
+def get_report(ticker):
     '''
     Returns CompanyReport of most recent report for a ticker.
     '''
