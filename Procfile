@@ -1,1 +1,1 @@
-web: gunicorn run:app --preload --timeout 10 --max-requests 300
+web: gunicorn run:app --preload --timeout 120 --max-requests 300
