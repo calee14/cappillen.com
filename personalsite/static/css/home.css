@@ -14,19 +14,32 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-p {
+p, h6 {
     text-decoration: none;
-    font-family: 'Roboto';
-    font-size: 20px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 17px;
     font-weight: 569;
     color: #f1f1f1;
     max-width: 555px;
 }
 
+h6 {
+  margin: 10px 0px 10px 0px;
+}
+
+a {
+  color: #f1f1f1;
+}
 .container {
   padding-left: 50px;
   padding-right: 50px;
+}
 
+.container a {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  font-weight: 569;
+  margin: 0px 5px 5px 0px;
 }
 
 .sage-title {
