@@ -32,3 +32,32 @@ function updateTickerList() {
 
     console.log(document.getElementById('content-ticker-list').value);
 }
+
+function submitLeperRequest() {
+    const url = '/leperbase/api/build';
+
+    const data = {
+        'tickerList' : document.getElementById('content-ticker-list').value,
+    };
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }
+
+    document.getElementById('leperSubmitButton').disabled = true;
+
+    fetch(url, options)
+        .then(response => response.blob())
+        .then(blob => {
+            const blobUrl = URL.createObjectURL(blob);
+            window.location.href = blobUrl;
+            document.getElementById('leperSubmitButton').disabled = false;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('leperSubmitButton').disabled = false;
+        });
+}

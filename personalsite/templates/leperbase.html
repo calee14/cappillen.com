@@ -24,14 +24,14 @@
   <body>
     <div class="container">
       <h1>Hello there, cdubs! Welcome to Leperbase!</h1>
-      <form action="leperbase/api/build" method="GET">
+      <form>
         <h2>Ticker List</h2>
         <ul id="ticker-list"></ul>
         <input id="inputField" type="text" width="100">
         <input type="hidden" name="tickerList" id="content-ticker-list">
         <button type="button" onclick="addTicker()">Add Ticker</button>
         <br>
-        <input type="submit" value="Make Report">
+        <input id="leperSubmitButton" type="button" value="Submit" onclick="submitLeperRequest()">
       </form>
       
     </div>

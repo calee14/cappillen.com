@@ -186,10 +186,11 @@ def kbd():
 def leperbase():
     return render_template('leperbase.html')
 
-@app.route('/leperbase/api/build', methods=['GET'])
+@app.route('/leperbase/api/build', methods=['GET', 'POST'])
 def build_report():
     # load tickers from arg as json str
-    tickers = request.args.get('tickerList', default="{}", type=str)
+    body = request.get_json()
+    tickers = body['tickerList']
     # load json str into list
     tickers = json.loads(tickers)
     # make report and send file for download
