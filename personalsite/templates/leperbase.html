@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <!-- meta and title -->
+    <meta charset="UTF-8">
+    <title>Leperbase API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- js scripts -->
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/2.0.0/trianglify.min.js"></script>
+
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/leper.css')}}">
+    <link rel="stylesheet" type="text/css" href="static/css/footer.css">
+    <link href='https://fonts.googleapis.com/css?family=Titillium Web' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Hello there, cdubs! Welcome to Leperbase!</h1>
+      <form action="leperbase/api/build" method="GET">
+        <h2>Ticker List</h2>
+        <ul id="ticker-list"></ul>
+        <input id="inputField" type="text" width="100">
+        <input type="hidden" name="tickerList" id="content-ticker-list">
+        <button type="button" onclick="addTicker()">Add Ticker</button>
+        <br>
+        <input type="submit" value="Make Report">
+      </form>
+      
+    </div>
+    
+    <!-- scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+    <script src="{{ url_for('static', filename='js/leper.js')}}"></script>
+  </body>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="footer-right">
+      <a rel="noopener" href="https://www.linkedin.com/in/cappillen-lee-077b7615a/" class="fab fa-linkedin" target="_blank"></a>
+      <a rel="noopener" href="https://stackoverflow.com/users/7356016/cap-lee" class="fab fa-stack-overflow" target="_blank"></a>
+      <a rel="noopener" href="https://github.com/calee14" class="fab fa-github" target="_blank"></a>
+    </div>
+  </footer>
+
+  
+
+</html>

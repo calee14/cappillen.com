@@ -9,6 +9,7 @@ from personalsite.decrypt import decrypt_file
 from .src.report import make_print_report, print_report
 import os
 import random
+import json
 
 ENCRYPTIONKEY = ''
 USERNAME = ''
@@ -181,8 +182,16 @@ def my_expired_token_callback(jwt_header, jwt_payload):
 def kbd():
     return render_template('kbd.html')
 
-@app.route('/leperbase/api/build', methods=['GET'])
+@app.route('/leperbase', methods=['GET'])
 def leperbase():
-    tickers = ['CRWD', 'NET', 'TSLA', 'DOCN']
-    make_print_report([tickers[random.randint(0,len(tickers)-1)]])
+    return render_template('leperbase.html')
+
+@app.route('/leperbase/api/build', methods=['GET'])
+def build_report():
+    # load tickers from arg as json str
+    tickers = request.args.get('tickerList', default="{}", type=str)
+    # load json str into list
+    tickers = json.loads(tickers)
+    # make report and send file for download
+    make_print_report(tickers)
     return send_file('../report.xlsx', as_attachment=True, attachment_filename='report.xlsx')
