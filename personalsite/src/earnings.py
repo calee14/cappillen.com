@@ -79,7 +79,7 @@ def price_change(ticker):
 
     # Set the URL of the page you want to scrape
     url = f"https://finance.yahoo.com/quote/{ticker}/history?period1={six_months_ago}&period2={current_time}&interval=1wk&filter=history&frequency=1wk&includeAdjustedClose=true"
-
+    print(url)
     # Send a GET request to the website with headers
     response = get_site(url, headers=headers)
 
@@ -89,7 +89,9 @@ def price_change(ticker):
     hist_table = soup.find_all(custom_hist_table)[0]
 
     hist_rows = hist_table.find_all('tr')
-    hist_recent = float(rm_commas(hist_rows[1].find_all('td')[4].get_text()))
+    # get price two days ago to avoid yahoo finance formatting
+    hist_recent = float(rm_commas(hist_rows[2].find_all('td')[4].get_text()))
+    # get price 6 months ago
     hist_6_months = float(rm_commas(hist_rows[-2].find_all('td')[4].get_text()))
     return int((hist_recent - hist_6_months)*100/hist_6_months)
 
