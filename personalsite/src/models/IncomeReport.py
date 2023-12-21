@@ -4,7 +4,7 @@ class IncomeReport(object):
     def __init__(self):
         pass
 
-    def load_data(self, revq, rev_growth, epsq, eps_growth, fcfq, fcf_growth, pegq, psq):
+    def load_data(self, revq, rev_growth, epsq, eps_growth, fcfq, fcf_growth, pegq, psgq, psq):
         self.revq = ' -> '.join(revq)
         self.rev_growth = rev_growth
         epsq = [str(eps_to_float(eps)) for eps in epsq]
