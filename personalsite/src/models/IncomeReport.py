@@ -13,6 +13,7 @@ class IncomeReport(object):
         self.fcfq = ' -> '.join(fcfq)
         self.fcf_growth = fcf_growth
         self.pegq = ' <- '.join(pegq)
+        self.psgq = ' <- '.join(psgq)
         self.psq = ' <- '.join(psq)
 
     @classmethod
