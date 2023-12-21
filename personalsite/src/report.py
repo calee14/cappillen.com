@@ -17,7 +17,7 @@ def build_report(ticker):
     fcfq, fcf_growth = company_fcf(ticker)
     pegq, psq = company_ratios(ticker)
     # calculate price/sales/growth manually
-    psgq = [str(float(ps) / rev_growth) for ps in psq]
+    psgq = ['{:.2f}'.format(float(ps) / rev_growth) for ps in psq]
     revy, epsy = prior_annual_stats(ticker)
 
     # earnings financial report
