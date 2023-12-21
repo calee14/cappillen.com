@@ -25,6 +25,7 @@ class IncomeReport(object):
         new_class.fcfq = j['fcfq']
         new_class.fcf_growth = j['fcf_growth']
         new_class.pegq = j['pegq']
+        new_class.psgq = j.get('pqgq', 'Missing values')
         new_class.psq = j['psq']
 
         return new_class
