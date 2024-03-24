@@ -24,7 +24,6 @@ def company_income(ticker):
     '''
 
     url = f"https://www.marketwatch.com/investing/stock/{ticker}/financials/income/quarter"
-
     # Send a GET request to the website with headers
     response = get_site(url)
 
@@ -151,7 +150,7 @@ def prior_annual_stats(ticker):
     return revy, epsy
 
 
-company_income('CRWD')
+# company_income('CRWD')
 # company_fcf('CRWD')
 # company_ratios('CRWD')
 # prior_annual_stats('CRWD')
