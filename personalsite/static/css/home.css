@@ -5,8 +5,8 @@ html, body {
 }
 
 body {
-  color: #010101;
-  background-color: #010101;
+  color: #2c2c2c;
+  background-color: #fafafa;
   padding: 0;
   margin: 0;
   font-family: 'Anton', sans-serif;
@@ -15,21 +15,37 @@ body {
 }
 
 p, h6 {
-    text-decoration: none;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 17px;
-    font-weight: 569;
-    color: #f1f1f1;
-    max-width: 555px;
+  text-decoration: none;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  font-weight: 400;
+  color: #2c2c2c;
+  max-width: 555px;
 }
 
 h6 {
   margin: 10px 0px 10px 0px;
+  font-weight: 500;
 }
 
 a {
-  color: #f1f1f1;
+  color: #2c2c2c;
+  transition: opacity 0.2s ease;
+  font-family: 'Roboto Mono', monospace;
 }
+
+a:hover {
+  opacity: 0.6;
+}
+
+.content {
+  padding-left: 13px;
+}
+.icons {
+  font-size: 13px;
+  color: blue;
+}
+
 .container {
   padding-left: 50px;
   padding-right: 50px;
@@ -38,7 +54,7 @@ a {
 .nav-links {
   font-family: 'Roboto Mono', monospace;
   font-size: 13px;
-  font-weight: 569;
+  font-weight: 400;
   margin: 0px 5px 5px 0px;
 }
 
@@ -49,16 +65,13 @@ a {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: left;
-  font-weight: bold;
+  font-weight: 400;
   text-transform: uppercase;
   word-wrap: break-word;
-  font-weight: 20;
   -webkit-font-smoothing: antialiased;
   margin: 0px;
-  white-space:normal;
+  white-space: normal;
   word-wrap: break-word;
-  /* -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #111; */
 }
 
 @media screen and (max-width: 800px) {
@@ -66,7 +79,7 @@ a {
     padding: 15px;
   }
   .sage-title {
-    white-space:normal;
+    white-space: normal;
     word-wrap: break-word;
     line-height: 169px;
   }
